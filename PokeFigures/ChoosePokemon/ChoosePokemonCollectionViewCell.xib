@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChoosePokemonCollectionViewCell" id="gTV-IL-0wX" customClass="ChoosePokemonCollectionViewCell" customModule="PokeFigures" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="231" height="398"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="231" height="398"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVf-jT-GZ0">
+                        <rect key="frame" x="0.0" y="0.0" width="231" height="398"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="149" translatesAutoresizingMaskIntoConstraints="NO" id="bS5-j6-OZv" userLabel="pokemonImage">
+                                <rect key="frame" x="0.0" y="0.0" width="231" height="398"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dragonite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E97-vX-bDR">
+                                <rect key="frame" x="8" y="360" width="115.5" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="E97-vX-bDR" secondAttribute="bottom" constant="8" id="GOb-4F-tyQ"/>
+                            <constraint firstItem="bS5-j6-OZv" firstAttribute="centerX" secondItem="zVf-jT-GZ0" secondAttribute="centerX" id="Jq8-0q-v1H"/>
+                            <constraint firstItem="bS5-j6-OZv" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" id="fpA-LO-NPx"/>
+                            <constraint firstItem="bS5-j6-OZv" firstAttribute="centerY" secondItem="zVf-jT-GZ0" secondAttribute="centerY" id="kNe-Gg-J2D"/>
+                            <constraint firstItem="bS5-j6-OZv" firstAttribute="top" secondItem="zVf-jT-GZ0" secondAttribute="top" id="p25-1R-NNn"/>
+                            <constraint firstItem="E97-vX-bDR" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" constant="8" id="vsC-3x-T6s"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="zVf-jT-GZ0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="D8x-yr-VTK"/>
+                <constraint firstAttribute="bottom" secondItem="zVf-jT-GZ0" secondAttribute="bottom" id="eMH-1P-Ate"/>
+                <constraint firstAttribute="trailing" secondItem="zVf-jT-GZ0" secondAttribute="trailing" id="gfb-f3-fkl"/>
+                <constraint firstItem="zVf-jT-GZ0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="t6C-Nz-rL1"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="231" height="398"/>
+            <connections>
+                <outlet property="pokemonImage" destination="bS5-j6-OZv" id="f7p-lc-9gw"/>
+            </connections>
+            <point key="canvasLocation" x="-15.217391304347828" y="58.928571428571423"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="149" width="431" height="431"/>
+    </resources>
+</document>
