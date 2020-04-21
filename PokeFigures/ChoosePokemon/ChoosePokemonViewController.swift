@@ -12,6 +12,9 @@ class ChoosePokemonViewController: UIViewController {
     
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     
+    let fetchPokemonUseCase = FetchPokemonUseCase()
+    
+    var pokemonList = [PokemonModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,23 +30,30 @@ class ChoosePokemonViewController: UIViewController {
         
         pokemonCollectionView.dataSource = self
         pokemonCollectionView.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        pokemonCollectionView.reloadData()
         
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(resizeCells), userInfo: nil, repeats: false)
+        fetchPokemonUseCase.fetchPokemonAndNotify(resultsCallback: { pokemonList in
+            
+            DispatchQueue.main.async {
+
+                self.pokemonList = pokemonList
+                self.pokemonCollectionView.reloadData()
+                
+                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.resizeCells), userInfo: nil, repeats: false)
+            }
+            
+        })
     }
 }
 
 extension ChoosePokemonViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return pokemonList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChoosePokemonCollectionViewCell", for: indexPath)
+        
+        (cell as? ChoosePokemonCollectionViewCell)?.bindData(pokemon: pokemonList[indexPath.row])
         
         return cell
     }

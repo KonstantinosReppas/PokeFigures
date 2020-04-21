@@ -20,8 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="231" height="398"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="149" translatesAutoresizingMaskIntoConstraints="NO" id="bS5-j6-OZv" userLabel="pokemonImage">
-                                <rect key="frame" x="0.0" y="0.0" width="231" height="398"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="8" y="8" width="215" height="382"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dragonite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E97-vX-bDR">
                                 <rect key="frame" x="8" y="360" width="115.5" height="30"/>
@@ -30,13 +29,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="E97-vX-bDR" secondAttribute="bottom" constant="8" id="GOb-4F-tyQ"/>
                             <constraint firstItem="bS5-j6-OZv" firstAttribute="centerX" secondItem="zVf-jT-GZ0" secondAttribute="centerX" id="Jq8-0q-v1H"/>
-                            <constraint firstItem="bS5-j6-OZv" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" id="fpA-LO-NPx"/>
+                            <constraint firstItem="bS5-j6-OZv" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" constant="8" id="fpA-LO-NPx"/>
                             <constraint firstItem="bS5-j6-OZv" firstAttribute="centerY" secondItem="zVf-jT-GZ0" secondAttribute="centerY" id="kNe-Gg-J2D"/>
-                            <constraint firstItem="bS5-j6-OZv" firstAttribute="top" secondItem="zVf-jT-GZ0" secondAttribute="top" id="p25-1R-NNn"/>
+                            <constraint firstItem="bS5-j6-OZv" firstAttribute="top" secondItem="zVf-jT-GZ0" secondAttribute="top" constant="8" id="p25-1R-NNn"/>
                             <constraint firstItem="E97-vX-bDR" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" constant="8" id="vsC-3x-T6s"/>
                         </constraints>
                     </view>
@@ -51,7 +50,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="231" height="398"/>
             <connections>
+                <outlet property="bgView" destination="zVf-jT-GZ0" id="Nqc-bs-hJy"/>
                 <outlet property="pokemonImage" destination="bS5-j6-OZv" id="f7p-lc-9gw"/>
+                <outlet property="pokemonNameLabel" destination="E97-vX-bDR" id="1CP-ew-OGf"/>
             </connections>
             <point key="canvasLocation" x="-15.217391304347828" y="58.928571428571423"/>
         </collectionViewCell>
