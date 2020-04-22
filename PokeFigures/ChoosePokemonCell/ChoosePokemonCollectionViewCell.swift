@@ -13,6 +13,10 @@ class ChoosePokemonCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var numberLabel: UILabel!
+    
+    var choosePokemonCellDelegate: ChoosePokemonCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,10 +29,19 @@ class ChoosePokemonCollectionViewCell: UICollectionViewCell {
 
     func bindData(pokemon: PokemonModel) {
         
-        pokemonNameLabel.text = pokemon.name
+        pokemonNameLabel.text = pokemon.name 
+        numberLabel.text = "#\(String(describing: pokemon.number!))"
         if pokemon.imageUrl != nil, let url = URL(string: pokemon.imageUrl!){
 
             pokemonImage.sd_setImage(with: url, completed: nil)
         }
     }
+    
+    @IBAction func onPlayClicked(_ sender: UIButton) {
+        choosePokemonCellDelegate?.onPlayClicked(view: playButton)
+    }
+}
+
+protocol ChoosePokemonCellDelegate {
+    func onPlayClicked(view: UIView)
 }

@@ -8,9 +8,16 @@
 
 import UIKit
 
-class ChoosePokemonViewController: UIViewController {
+class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
+    func onPlayClicked(view: UIView) {
+        viewForAnimation = view
+        performSegue(withIdentifier: "segue", sender: self)
+    }
     
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
+    @IBOutlet weak var seekSlider: UISlider!
+    
+    var viewForAnimation: UIView?
     
     let fetchPokemonUseCase = FetchPokemonUseCase()
     
@@ -43,6 +50,17 @@ class ChoosePokemonViewController: UIViewController {
             
         })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+    }
+    
+    
+    @IBAction func onScrollSeek(_ sender: UISlider) {
+        pokemonCollectionView.scrollToItem(at: IndexPath(item: Int(sender.value * Float((pokemonList.count-1))), section: 0), at: .centeredHorizontally, animated: true)
+        
+    }
 }
 
 extension ChoosePokemonViewController: UICollectionViewDataSource {
@@ -55,6 +73,11 @@ extension ChoosePokemonViewController: UICollectionViewDataSource {
         
         (cell as? ChoosePokemonCollectionViewCell)?.bindData(pokemon: pokemonList[indexPath.row])
         
+        (cell as? ChoosePokemonCollectionViewCell)?.choosePokemonCellDelegate = self
+        
+        // Transform the cell size based on the scale
+        cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        
         return cell
     }
     
@@ -62,7 +85,7 @@ extension ChoosePokemonViewController: UICollectionViewDataSource {
 
 extension ChoosePokemonViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width * CGFloat(C.POKEMON_CELL_WIDTH_PERCENTAGE), height: collectionView.bounds.size.height * 0.95)
+        return CGSize(width: collectionView.bounds.size.width * CGFloat(C.POKEMON_CELL_WIDTH_PERCENTAGE), height: collectionView.bounds.size.height * CGFloat(C.POKEMON_CELL_HEIGHT_PERCENTAGE))
     }
 }
 
@@ -70,25 +93,22 @@ extension ChoosePokemonViewController : UIScrollViewDelegate {
     // perform scaling whenever the collection view is being scrolled
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        if(!seekSlider.isTouchInside) {
+
+            seekSlider.value = Float(pokemonCollectionView.indexPathsForVisibleItems[0].row)/Float(pokemonList.count - 1)
+        }
+        
         resizeCells()
     }
     
-    // for custom snap-to paging, when user stop scrolling
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.pokemonCollectionView.scrollToNearestVisibleCollectionViewCell()
+    }
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        var indexOfCellWithLargestWidth = 0
-        var largestWidth : CGFloat = 1
-        
-        for cell in pokemonCollectionView.visibleCells {
-            if cell.frame.size.width > largestWidth {
-                largestWidth = cell.frame.size.width
-                if let indexPath = pokemonCollectionView.indexPath(for: cell) {
-                    indexOfCellWithLargestWidth = indexPath.item
-                }
-            }
+        if !decelerate {
+            self.pokemonCollectionView.scrollToNearestVisibleCollectionViewCell()
         }
-        
-        pokemonCollectionView.scrollToItem(at: IndexPath(item: indexOfCellWithLargestWidth, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     @objc func resizeCells() {
@@ -116,8 +136,6 @@ extension ChoosePokemonViewController : UIScrollViewDelegate {
             if(scaleX > 1.0){
                 scaleX = 1.0
             }
-            
-            print( String(Float(distance)))
             
             // Transform the cell size based on the scale
             cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)

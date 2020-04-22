@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="240" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ik4-Pc-rM4">
-                                <rect key="frame" x="0.0" y="157" width="414" height="705"/>
+                                <rect key="frame" x="0.0" y="157" width="414" height="687"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iZe-UL-oJL">
                                     <size key="itemSize" width="128" height="128"/>
@@ -43,26 +43,53 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9ZF-xD-ifA">
+                                <rect key="frame" x="48" y="836" width="318" height="31"/>
+                                <connections>
+                                    <action selector="onScrollSeek:" destination="BYZ-38-t0r" eventType="valueChanged" id="pSW-11-iMQ"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Ik4-Pc-rM4" firstAttribute="top" secondItem="IYu-dJ-gnh" secondAttribute="bottom" constant="20" id="7gE-6N-mPT"/>
                             <constraint firstItem="IYu-dJ-gnh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="IL6-ha-a4u"/>
-                            <constraint firstItem="Ik4-Pc-rM4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Pge-Ps-lTY"/>
+                            <constraint firstItem="Ik4-Pc-rM4" firstAttribute="bottom" secondItem="9ZF-xD-ifA" secondAttribute="top" constant="8" id="Pge-Ps-lTY"/>
+                            <constraint firstItem="9ZF-xD-ifA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="4" id="QHK-H1-tid"/>
                             <constraint firstItem="Ik4-Pc-rM4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TaC-p3-fEW"/>
                             <constraint firstItem="IYu-dJ-gnh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TpL-QX-tVP"/>
                             <constraint firstItem="Ik4-Pc-rM4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XEY-ry-zcK"/>
+                            <constraint firstItem="9ZF-xD-ifA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="evv-jx-eDl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9ZF-xD-ifA" secondAttribute="trailing" constant="50" id="sIU-Ev-Vuy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IYu-dJ-gnh" secondAttribute="trailing" id="xVx-YI-SF9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="pokemonCollectionView" destination="Ik4-Pc-rM4" id="qhO-0M-elv"/>
+                        <outlet property="seekSlider" destination="9ZF-xD-ifA" id="fN2-LS-qS6"/>
+                        <segue destination="zR3-I7-HCO" kind="presentation" identifier="segue" id="0sh-ZM-pTN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Pokemon Details View Controller-->
+        <scene sceneID="Fwg-E9-37N">
+            <objects>
+                <viewController id="zR3-I7-HCO" customClass="PokemonDetailsViewController" customModule="PokeFigures" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chl-Pp-Tja">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Xux-IA-GF7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aUq-bn-xio"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1C7-fc-APn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="138"/>
         </scene>
     </scenes>
 </document>

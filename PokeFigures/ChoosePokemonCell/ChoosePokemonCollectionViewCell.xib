@@ -23,20 +23,38 @@
                                 <rect key="frame" x="8" y="8" width="215" height="382"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dragonite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E97-vX-bDR">
-                                <rect key="frame" x="8" y="360" width="115.5" height="30"/>
+                                <rect key="frame" x="10" y="360" width="115.5" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMX-bR-95h">
+                                <rect key="frame" x="10" y="338" width="20" height="22"/>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="play.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="onPlayClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="kAU-UK-lQ6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEp-yd-Ehu">
+                                <rect key="frame" x="125.5" y="370" width="25.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="E97-vX-bDR" firstAttribute="top" secondItem="GMX-bR-95h" secondAttribute="bottom" id="BPC-ez-q85"/>
                             <constraint firstAttribute="bottom" secondItem="E97-vX-bDR" secondAttribute="bottom" constant="8" id="GOb-4F-tyQ"/>
                             <constraint firstItem="bS5-j6-OZv" firstAttribute="centerX" secondItem="zVf-jT-GZ0" secondAttribute="centerX" id="Jq8-0q-v1H"/>
+                            <constraint firstItem="GMX-bR-95h" firstAttribute="leading" secondItem="E97-vX-bDR" secondAttribute="leading" id="c4B-wC-ZJM"/>
+                            <constraint firstItem="OEp-yd-Ehu" firstAttribute="bottom" secondItem="E97-vX-bDR" secondAttribute="bottom" constant="-2" id="dTb-ap-UbC"/>
                             <constraint firstItem="bS5-j6-OZv" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" constant="8" id="fpA-LO-NPx"/>
                             <constraint firstItem="bS5-j6-OZv" firstAttribute="centerY" secondItem="zVf-jT-GZ0" secondAttribute="centerY" id="kNe-Gg-J2D"/>
                             <constraint firstItem="bS5-j6-OZv" firstAttribute="top" secondItem="zVf-jT-GZ0" secondAttribute="top" constant="8" id="p25-1R-NNn"/>
-                            <constraint firstItem="E97-vX-bDR" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" constant="8" id="vsC-3x-T6s"/>
+                            <constraint firstItem="OEp-yd-Ehu" firstAttribute="leading" secondItem="E97-vX-bDR" secondAttribute="trailing" id="qz3-mx-NG9"/>
+                            <constraint firstItem="E97-vX-bDR" firstAttribute="leading" secondItem="zVf-jT-GZ0" secondAttribute="leading" constant="10" id="vsC-3x-T6s"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -51,6 +69,8 @@
             <size key="customSize" width="231" height="398"/>
             <connections>
                 <outlet property="bgView" destination="zVf-jT-GZ0" id="Nqc-bs-hJy"/>
+                <outlet property="numberLabel" destination="OEp-yd-Ehu" id="KZS-RI-uX8"/>
+                <outlet property="playButton" destination="GMX-bR-95h" id="2fY-Eh-I4M"/>
                 <outlet property="pokemonImage" destination="bS5-j6-OZv" id="f7p-lc-9gw"/>
                 <outlet property="pokemonNameLabel" destination="E97-vX-bDR" id="1CP-ew-OGf"/>
             </connections>
@@ -59,5 +79,6 @@
     </objects>
     <resources>
         <image name="149" width="431" height="431"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

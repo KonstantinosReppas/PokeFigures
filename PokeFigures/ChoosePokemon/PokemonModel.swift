@@ -16,4 +16,5 @@ struct PokemonModel: Codable {
     
     var name: String
     var imageUrl: String?
+    var number: Int?
 }
