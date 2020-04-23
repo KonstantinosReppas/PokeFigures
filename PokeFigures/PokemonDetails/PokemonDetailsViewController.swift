@@ -14,8 +14,13 @@ class PokemonDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.goBack), userInfo: nil, repeats: false)
+
     }
     
+    @objc func goBack(){
+        dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

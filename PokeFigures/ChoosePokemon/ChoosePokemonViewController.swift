@@ -8,17 +8,41 @@
 
 import UIKit
 
-class ChoosePokemonViewController: UIViewController {
+class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
     
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     @IBOutlet weak var seekSlider: UISlider!
     @IBOutlet weak var filtersStackView: UIStackView!
     @IBOutlet weak var filtersScrollView: UIScrollView!
+    @IBAction func onScrollSeek(_ sender: UISlider) {
+        pokemonCollectionView.scrollToItem(at: IndexPath(item: Int(sender.value * Float((pokemonList.count-1))), section: 0), at: .centeredHorizontally, animated: true)
+    }
     
     let fetchPokemonUseCase = FetchPokemonUseCase()
     var filterHandler = GenerationFiltersHandler()
     
     var pokemonList = [PokemonModel]()
+    
+    let transition = TransitionAnimator()
+    var selectedCell = UIView()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        handleViewStyling()
+        
+        setupPokemonCollectionViewCells()
+        
+        pokemonCollectionView.dataSource = self
+        pokemonCollectionView.delegate = self
+        
+        fetchData()
+        
+        filterHandler.setupFilters(buttons: filtersStackView.subviews as! [UIButton])
+        
+        hanndleReturnFromDetailsAnimation()
+    }
     
     fileprivate func setupPokemonCollectionViewCells() {
         let pokemonCellNib = UINib(nibName: "ChoosePokemonCollectionViewCell", bundle: nil)
@@ -49,25 +73,30 @@ class ChoosePokemonViewController: UIViewController {
         })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        handleViewStyling()
-        
-        setupPokemonCollectionViewCells()
-        
-        pokemonCollectionView.dataSource = self
-        pokemonCollectionView.delegate = self
-        
-        fetchData()
-        
-        filterHandler.setupFilters(buttons: filtersStackView.subviews as! [UIButton])
+    
+    fileprivate func hanndleReturnFromDetailsAnimation() {
+        transition.dismissCompletion = {
+            self.selectedCell.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+                self.selectedCell.transform = .identity
+            }) { _ in
+                self.selectedCell.tintColor = .label
+            }
+        }
     }
     
+    func onPlayClicked(view: UIButton) {
+        view.tintColor = .blue
+        selectedCell = view
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: {
+            self.selectedCell.transform = CGAffineTransform(translationX: 25, y: -20).concatenating(CGAffineTransform(scaleX: 2, y: 2))
+        }){ _ in
+            self.performSegue(withIdentifier: "segue", sender: self)
+        }
+    }
     
-    @IBAction func onScrollSeek(_ sender: UISlider) {
-        pokemonCollectionView.scrollToItem(at: IndexPath(item: Int(sender.value * Float((pokemonList.count-1))), section: 0), at: .centeredHorizontally, animated: true)
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.transitioningDelegate = self
+        segue.destination.modalPresentationStyle = .fullScreen
     }
 }
-

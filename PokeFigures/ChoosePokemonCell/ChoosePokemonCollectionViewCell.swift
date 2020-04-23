@@ -38,10 +38,12 @@ class ChoosePokemonCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func onPlayClicked(_ sender: UIButton) {
+        
         choosePokemonCellDelegate?.onPlayClicked(view: playButton)
+    
     }
 }
 
 protocol ChoosePokemonCellDelegate {
-    func onPlayClicked(view: UIView)
+    func onPlayClicked(view: UIButton)
 }

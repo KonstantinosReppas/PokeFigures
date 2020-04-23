@@ -19,7 +19,7 @@ extension ChoosePokemonViewController: UICollectionViewDataSource {
         
         (cell as? ChoosePokemonCollectionViewCell)?.bindData(pokemon: pokemonList[indexPath.row])
         
-//        (cell as? ChoosePokemonCollectionViewCell)?.choosePokemonCellDelegate = self
+        (cell as? ChoosePokemonCollectionViewCell)?.choosePokemonCellDelegate = self
         
         // Transform the cell size based on the scale
         cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
