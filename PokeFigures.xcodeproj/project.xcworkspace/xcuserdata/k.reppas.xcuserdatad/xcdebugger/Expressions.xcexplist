@@ -13,5 +13,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "ChoosePokemonViewController.setupFilters():ChoosePokemonViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "filtersStackView.subviews[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

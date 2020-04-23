@@ -24,6 +24,8 @@
 		D118CDE8244F3EDD00CBB0CB /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118CDE7244F3EDD00CBB0CB /* AnimationHelper.swift */; };
 		D118CDEB244F402B00CBB0CB /* PokemonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118CDEA244F402B00CBB0CB /* PokemonDetailsViewController.swift */; };
 		D118CDED2450C65300CBB0CB /* ScrollViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118CDEC2450C65300CBB0CB /* ScrollViewExtensions.swift */; };
+		D118CDEF2451937A00CBB0CB /* GenerationFiltersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118CDEE2451937A00CBB0CB /* GenerationFiltersHandler.swift */; };
+		D118CDF124519AD600CBB0CB /* PokemonCollectionViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118CDF024519AD600CBB0CB /* PokemonCollectionViewExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		D118CDE7244F3EDD00CBB0CB /* AnimationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 		D118CDEA244F402B00CBB0CB /* PokemonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewController.swift; sourceTree = "<group>"; };
 		D118CDEC2450C65300CBB0CB /* ScrollViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewExtensions.swift; sourceTree = "<group>"; };
+		D118CDEE2451937A00CBB0CB /* GenerationFiltersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationFiltersHandler.swift; sourceTree = "<group>"; };
+		D118CDF024519AD600CBB0CB /* PokemonCollectionViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				D118CDBC244E2B7900CBB0CB /* ChoosePokemonViewController.swift */,
 				D118CDD8244EEC1E00CBB0CB /* FetchPokemonUseCase.swift */,
 				D118CDDA244EEFAA00CBB0CB /* PokemonModel.swift */,
+				D118CDEE2451937A00CBB0CB /* GenerationFiltersHandler.swift */,
+				D118CDF024519AD600CBB0CB /* PokemonCollectionViewExtentions.swift */,
 			);
 			path = ChoosePokemon;
 			sourceTree = "<group>";
@@ -221,6 +227,8 @@
 				D118CDC3244E2B7900CBB0CB /* PokeFigures.xcdatamodeld in Sources */,
 				D118CDBD244E2B7900CBB0CB /* ChoosePokemonViewController.swift in Sources */,
 				D118CDE0244F0B1400CBB0CB /* StringExtensions.swift in Sources */,
+				D118CDEF2451937A00CBB0CB /* GenerationFiltersHandler.swift in Sources */,
+				D118CDF124519AD600CBB0CB /* PokemonCollectionViewExtentions.swift in Sources */,
 				D118CDB9244E2B7900CBB0CB /* AppDelegate.swift in Sources */,
 				D118CDE8244F3EDD00CBB0CB /* AnimationHelper.swift in Sources */,
 				D118CDD6244E3CAA00CBB0CB /* C.swift in Sources */,

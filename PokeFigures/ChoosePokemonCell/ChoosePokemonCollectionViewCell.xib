@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E97-vX-bDR" firstAttribute="top" secondItem="GMX-bR-95h" secondAttribute="bottom" id="BPC-ez-q85"/>
                             <constraint firstAttribute="bottom" secondItem="E97-vX-bDR" secondAttribute="bottom" constant="8" id="GOb-4F-tyQ"/>

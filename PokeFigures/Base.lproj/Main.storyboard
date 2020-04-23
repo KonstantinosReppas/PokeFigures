@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="240" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ik4-Pc-rM4">
-                                <rect key="frame" x="0.0" y="157" width="414" height="687"/>
+                                <rect key="frame" x="0.0" y="227" width="414" height="617"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iZe-UL-oJL">
                                     <size key="itemSize" width="128" height="128"/>
@@ -27,7 +27,7 @@
                                 <cells/>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IYu-dJ-gnh">
-                                <rect key="frame" x="0.0" y="64" width="414" height="73"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="143"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poke Figures" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPx-Rk-LMb">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="32.5"/>
@@ -41,6 +41,81 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CG7-h9-Qcw">
+                                        <rect key="frame" x="0.0" y="93" width="414" height="50"/>
+                                        <subviews>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Cvg-Q1-dgj">
+                                                <rect key="frame" x="0.0" y="0.0" width="490" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-rr-FYZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy8-TE-roQ">
+                                                        <rect key="frame" x="70" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDb-uL-Igy">
+                                                        <rect key="frame" x="140" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfE-hD-SOx">
+                                                        <rect key="frame" x="210" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wr6-cg-AT8">
+                                                        <rect key="frame" x="280" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k4-yS-TRD">
+                                                        <rect key="frame" x="350" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ox-Ma-n3C">
+                                                        <rect key="frame" x="420" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Cvg-Q1-dgj" secondAttribute="bottom" id="7gG-Lh-cNt"/>
+                                            <constraint firstAttribute="trailing" secondItem="Cvg-Q1-dgj" secondAttribute="trailing" id="CJj-jh-Qzf"/>
+                                            <constraint firstItem="Cvg-Q1-dgj" firstAttribute="height" secondItem="CG7-h9-Qcw" secondAttribute="height" id="NLe-iu-LeD"/>
+                                            <constraint firstItem="Cvg-Q1-dgj" firstAttribute="leading" secondItem="CG7-h9-Qcw" secondAttribute="leading" id="X4n-lq-Eqk"/>
+                                            <constraint firstItem="Cvg-Q1-dgj" firstAttribute="top" secondItem="CG7-h9-Qcw" secondAttribute="top" id="bXF-Da-ZNC"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="q1z-I7-H4s"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="aCp-fg-22W"/>
+                                    </scrollView>
                                 </subviews>
                             </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9ZF-xD-ifA">
@@ -66,6 +141,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="filtersScrollView" destination="CG7-h9-Qcw" id="5Xb-6c-12f"/>
+                        <outlet property="filtersStackView" destination="Cvg-Q1-dgj" id="oRw-tZ-IoN"/>
                         <outlet property="pokemonCollectionView" destination="Ik4-Pc-rM4" id="qhO-0M-elv"/>
                         <outlet property="seekSlider" destination="9ZF-xD-ifA" id="fN2-LS-qS6"/>
                         <segue destination="zR3-I7-HCO" kind="presentation" identifier="segue" id="0sh-ZM-pTN"/>
