@@ -12,12 +12,12 @@ import UIKit
 extension ChoosePokemonViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let originFrame = selectedCell.superview?.convert(selectedCell.frame, to: nil) else {
+        guard let originFrame = transitionSourceView.superview?.convert(transitionSourceView.frame, to: nil) else {
             return transition
         }
         transition.originFrame = originFrame
         transition.presenting = true
-        selectedCell.isHidden = true
+        transitionSourceView.isHidden = true
         return transition
     }
     

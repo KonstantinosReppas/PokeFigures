@@ -40,7 +40,7 @@ class GenerationFiltersHandler {
             filterButtons[previousSelectedFilter].isSelected = false
             filterButtons[tag].isSelected = true
             previousSelectedFilter = tag
-            generationFiltersDelegate?.filterClicked(gen: tag + 1)
+            generationFiltersDelegate?.filterClicked(gen: tag)
         }
     }
 }

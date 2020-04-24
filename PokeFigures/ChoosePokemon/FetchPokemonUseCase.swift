@@ -10,10 +10,13 @@ import Foundation
 
 class FetchPokemonUseCase {
     
-    let url = "https://pokeapi.co/api/v2/pokemon?limit=151"
+    let numOfPokemonPerGen = [151, 100, 135, 107, 156, 72, 86]
     
-    func fetchPokemonAndNotify(resultsCallback: @escaping(_ pokemonList: [PokemonModel]) -> Void) {
-        if let url = URL(string: url) {
+    var currentGen = 0
+    
+    func fetchPokemonAndNotify(generation: Int = 0, resultsCallback: @escaping(_ pokemonList: [PokemonModel]) -> Void) {
+        currentGen = generation
+        if let url = URL(string: constructUrl()) {
             let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
                 if error != nil {
                     resultsCallback([])
@@ -26,16 +29,28 @@ class FetchPokemonUseCase {
                     else{
                         resultsCallback([])
                     }
-                    
                 }
-                
             })
             task.resume()
             
         }
     }
     
+    func constructUrl() -> String {
+        var url = "https://pokeapi.co/api/v2/pokemon?offset="
+        
+        url = url + String(calculateOffset()) + "&limit=" + String(numOfPokemonPerGen[currentGen])
+        
+        return url
+    }
 
+    func calculateOffset() -> Int {
+        var offset = 0
+        for i in 0..<currentGen {
+            offset += numOfPokemonPerGen[i]
+        }
+        return offset
+    }
     
     func parseJSON(_ pokemonData: Data) -> [PokemonModel]? {
         var pokemonList = [PokemonModel]()
@@ -45,7 +60,7 @@ class FetchPokemonUseCase {
             let decodedData = try decoder.decode(PokemonResults.self, from: pokemonData)
             for i in 0..<decodedData.results.count {
                 var pokemon = decodedData.results[i]
-                pokemon.imageUrl = "https://pokeres.bastionbot.org/images/pokemon/\(i + 1).png"
+                pokemon.imageUrl = "https://pokeres.bastionbot.org/images/pokemon/\(calculateOffset() + i + 1).png"
                 pokemon.number = i + 1
                 pokemon.name.capitalizeFirstLetter()
                 pokemonList.append(pokemon)

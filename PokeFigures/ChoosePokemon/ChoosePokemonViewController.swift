@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
+class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate, GenerationFiltersDelegate {
     
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     @IBOutlet weak var seekSlider: UISlider!
@@ -24,7 +24,7 @@ class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
     var pokemonList = [PokemonModel]()
     
     let transition = TransitionAnimator()
-    var selectedCell = UIView()
+    var transitionSourceView = UIView()
     
     
     override func viewDidLoad() {
@@ -40,6 +40,7 @@ class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
         fetchData()
         
         filterHandler.setupFilters(buttons: filtersStackView.subviews as! [UIButton])
+        filterHandler.generationFiltersDelegate = self
         
         hanndleReturnFromDetailsAnimation()
     }
@@ -59,10 +60,16 @@ class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
         filtersStackView.clipsToBounds = false
     }
     
-    fileprivate func fetchData() {
-        fetchPokemonUseCase.fetchPokemonAndNotify(resultsCallback: { pokemonList in
+    fileprivate func fetchData(generation: Int = 0) {
+        fetchPokemonUseCase.fetchPokemonAndNotify(generation: generation, resultsCallback: { pokemonList in
             
             DispatchQueue.main.async {
+                
+                self.pokemonList.removeAll()
+                self.pokemonCollectionView.reloadData()
+                
+                self.pokemonCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+                self.seekSlider.value = 0
                 
                 self.pokemonList = pokemonList
                 self.pokemonCollectionView.reloadData()
@@ -76,20 +83,20 @@ class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
     
     fileprivate func hanndleReturnFromDetailsAnimation() {
         transition.dismissCompletion = {
-            self.selectedCell.isHidden = false
+            self.transitionSourceView.isHidden = false
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
-                self.selectedCell.transform = .identity
+                self.transitionSourceView.transform = .identity
             }) { _ in
-                self.selectedCell.tintColor = .label
+                self.transitionSourceView.tintColor = .label
             }
         }
     }
     
     func onPlayClicked(view: UIButton) {
         view.tintColor = .blue
-        selectedCell = view
+        transitionSourceView = view
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: {
-            self.selectedCell.transform = CGAffineTransform(translationX: 25, y: -20).concatenating(CGAffineTransform(scaleX: 2, y: 2))
+            self.transitionSourceView.transform = CGAffineTransform(translationX: 25, y: -20).concatenating(CGAffineTransform(scaleX: 2, y: 2))
         }){ _ in
             self.performSegue(withIdentifier: "segue", sender: self)
         }
@@ -99,4 +106,10 @@ class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate {
         segue.destination.transitioningDelegate = self
         segue.destination.modalPresentationStyle = .fullScreen
     }
+    
+    
+    func filterClicked(gen: Int) {
+        fetchData(generation: gen)
+    }
+    
 }
