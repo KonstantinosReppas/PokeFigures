@@ -41,10 +41,14 @@ extension ChoosePokemonViewController : UIScrollViewDelegate {
         
         if(!seekSlider.isTouchInside) {
 
-            seekSlider.value = Float(pokemonCollectionView.indexPathsForVisibleItems[0].row)/Float(pokemonList.count - 1)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.updateSeekBarPosition), userInfo: nil, repeats: false)
         }
         
         resizeCells()
+    }
+    
+    @objc func updateSeekBarPosition(){
+        seekSlider.value = Float(pokemonCollectionView.indexPathsForVisibleItems[0].row)/Float(pokemonList.count - 1)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
