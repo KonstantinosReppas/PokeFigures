@@ -7,29 +7,39 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PokemonDetailsViewController: UIViewController {
-
+    
+    var pokemonModel: PokemonModel?
+    
+    @IBOutlet weak var pokemonImageview: UIImageView!
+    @IBOutlet weak var pokemonNameImageView: UILabel!
+    @IBOutlet weak var topViewLayout: UIView!
+    @IBOutlet weak var typesListLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.goBack), userInfo: nil, repeats: false)
+        
+        topViewLayout.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        topViewLayout.clipsToBounds = true
+        topViewLayout.layer.cornerRadius = 20
+        
+        typesListLabel.text = "Fire\nWater"
 
     }
     
-    @objc func goBack(){
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pokemonNameImageView.text = pokemonModel?.name
+        if pokemonModel?.imageUrl != nil, let url = URL(string: pokemonModel?.imageUrl ?? ""){
+
+            pokemonImageview?.sd_setImage(with: url, completed: nil)
+        }
+    }
+
+    @IBAction func onBackPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

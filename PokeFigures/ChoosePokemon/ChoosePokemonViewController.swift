@@ -10,6 +10,7 @@ import UIKit
 
 class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate, GenerationFiltersDelegate {
     
+    
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     @IBOutlet weak var seekSlider: UISlider!
     @IBOutlet weak var filtersStackView: UIStackView!
@@ -92,19 +93,24 @@ class ChoosePokemonViewController: UIViewController, ChoosePokemonCellDelegate, 
         }
     }
     
-    func onPlayClicked(view: UIButton) {
+    func onPlayClicked(view: UIButton, pokemonModelClicked: PokemonModel) {
         view.tintColor = .blue
         transitionSourceView = view
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: {
             self.transitionSourceView.transform = CGAffineTransform(translationX: 25, y: -20).concatenating(CGAffineTransform(scaleX: 2, y: 2))
         }){ _ in
-            self.performSegue(withIdentifier: "segue", sender: self)
+            self.performSegue(withIdentifier: "toDetailsViewSegue", sender: pokemonModelClicked)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.transitioningDelegate = self
-        segue.destination.modalPresentationStyle = .fullScreen
+        if let destinationVC = segue.destination as? PokemonDetailsViewController{
+
+            destinationVC.transitioningDelegate = self
+            destinationVC.modalPresentationStyle = .fullScreen
+            
+            destinationVC.pokemonModel = sender as? PokemonModel
+        }
     }
     
     

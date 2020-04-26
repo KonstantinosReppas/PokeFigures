@@ -18,6 +18,8 @@ class ChoosePokemonCollectionViewCell: UICollectionViewCell {
     
     var choosePokemonCellDelegate: ChoosePokemonCellDelegate?
     
+    var pokemon: PokemonModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +31,8 @@ class ChoosePokemonCollectionViewCell: UICollectionViewCell {
 
     func bindData(pokemon: PokemonModel) {
         
+        self.pokemon = pokemon
+        
         pokemonNameLabel.text = pokemon.name 
         numberLabel.text = "#\(String(describing: pokemon.number!))"
         if pokemon.imageUrl != nil, let url = URL(string: pokemon.imageUrl!){
@@ -39,11 +43,11 @@ class ChoosePokemonCollectionViewCell: UICollectionViewCell {
     
     @IBAction func onPlayClicked(_ sender: UIButton) {
         
-        choosePokemonCellDelegate?.onPlayClicked(view: playButton)
+        choosePokemonCellDelegate?.onPlayClicked(view: playButton, pokemonModelClicked: pokemon!)
     
     }
 }
 
 protocol ChoosePokemonCellDelegate {
-    func onPlayClicked(view: UIButton)
+    func onPlayClicked(view: UIButton, pokemonModelClicked: PokemonModel)
 }

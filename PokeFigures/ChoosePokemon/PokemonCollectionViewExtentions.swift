@@ -33,6 +33,15 @@ extension ChoosePokemonViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width * CGFloat(C.POKEMON_CELL_WIDTH_PERCENTAGE), height: collectionView.bounds.size.height * CGFloat(C.POKEMON_CELL_HEIGHT_PERCENTAGE))
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if let flowLayout = pokemonCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.invalidateLayout()
+            
+        }
+    }
 }
 
 extension ChoosePokemonViewController : UIScrollViewDelegate {
@@ -40,7 +49,7 @@ extension ChoosePokemonViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if(!seekSlider.isTouchInside) {
-
+            
             Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.updateSeekBarPosition), userInfo: nil, repeats: false)
         }
         
@@ -54,7 +63,7 @@ extension ChoosePokemonViewController : UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.pokemonCollectionView.scrollToNearestVisibleCollectionViewCell()
     }
-
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             self.pokemonCollectionView.scrollToNearestVisibleCollectionViewCell()
