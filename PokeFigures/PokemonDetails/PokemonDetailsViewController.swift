@@ -29,9 +29,13 @@ class PokemonDetailsViewController: UIViewController {
         topViewLayout.layer.cornerRadius = 20
 
         mPokemonDetailsUseCase.fetchPokemonDetailsAndNotify(id: pokemonModel?.number ?? 0) { (pokemonDetailsModel) in
-            DispatchQueue.main.async {                
-                self.typesListLabel.text = pokemonDetailsModel.types[0].type.name
-                self.statsListLabel.text = pokemonDetailsModel.stats[0].stat.name
+            DispatchQueue.main.async {
+                for i in 0..<pokemonDetailsModel.types.count {
+                    self.typesListLabel.text?.append(pokemonDetailsModel.types[i].type.name + "\n")
+                }
+                for i in 0..<pokemonDetailsModel.stats.count {
+                    self.statsListLabel.text?.append(pokemonDetailsModel.stats[i].stat.name + ": " + String(pokemonDetailsModel.stats[i].base_stat) + "\n")
+                }
                 
             }
         }

@@ -17,6 +17,7 @@ struct TypesArray: Codable {
     let type: TypeOrStat
 }
 struct StatsArray: Codable {
+    let base_stat: Int
     let stat: TypeOrStat
 }
 

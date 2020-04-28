@@ -61,7 +61,7 @@ class FetchPokemonUseCase {
             for i in 0..<decodedData.results.count {
                 var pokemon = decodedData.results[i]
                 pokemon.imageUrl = "https://pokeres.bastionbot.org/images/pokemon/\(calculateOffset() + i + 1).png"
-                pokemon.number = i + 1
+                pokemon.number = calculateOffset() + i + 1
                 pokemon.name.capitalizeFirstLetter()
                 pokemonList.append(pokemon)
             }
