@@ -27,6 +27,11 @@ class PokemonDetailsViewController: UIViewController {
         topViewLayout.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         topViewLayout.clipsToBounds = true
         topViewLayout.layer.cornerRadius = 20
+        
+        UIView.animate(withDuration: 0, delay: 0, options: [.curveEaseIn], animations: {
+            self.typesListLabel.transform = CGAffineTransform(translationX: 0, y: 150)
+            self.statsListLabel.transform = CGAffineTransform(translationX: 0, y: 150)
+        }, completion: nil) 
 
         mPokemonDetailsUseCase.fetchPokemonDetailsAndNotify(id: pokemonModel?.number ?? 0) { (pokemonDetailsModel) in
             DispatchQueue.main.async {
@@ -36,7 +41,10 @@ class PokemonDetailsViewController: UIViewController {
                 for i in 0..<pokemonDetailsModel.stats.count {
                     self.statsListLabel.text?.append(pokemonDetailsModel.stats[i].stat.name + ": " + String(pokemonDetailsModel.stats[i].base_stat) + "\n")
                 }
-                
+                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+                    self.typesListLabel.transform = .identity
+                    self.statsListLabel.transform = .identity
+                }, completion: nil)
             }
         }
     }
